@@ -5,13 +5,17 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { fonts } from '../constants/fonts'
 import { colors } from '../constants/colors';
 
-type Props = {}
+type HeaderProps = {
+    icon: "calendar-range",
+    action: Function
+}
 
-const Header = (props: Props) => {
+const Header = ({icon, action}: HeaderProps) => {
+
     return (
         <View style={styles.container}>
             <Text style={fonts.h1}>Aujourd'hui</Text>
-            <MaterialCommunityIcons name='calendar-range' size={30} color={colors.green} />
+            <MaterialCommunityIcons name={icon} size={30} color={colors.green} onPress={() => action()} />
         </View>
     )
 }
