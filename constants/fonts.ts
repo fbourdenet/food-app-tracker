@@ -27,6 +27,11 @@ export const fonts = StyleSheet.create({
         fontWeight: "500",
         color: colors.lightgray
     },
+    h6: {
+        fontSize: 12,
+        fontWeight: "600",
+        color: colors.white
+    },
     p: {
         fontSize: 12,
         fontWeight: "500",

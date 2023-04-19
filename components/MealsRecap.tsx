@@ -24,7 +24,7 @@ const MealsRecap = ({ icon, title, kcal }: MealRecapProps) => {
                 </View>
 
                 <TouchableOpacity onPress={() => console.log("pressed2")}>
-                    <MaterialCommunityIcons name='plus-circle-outline' size={24} color={colors.lightgray}></MaterialCommunityIcons>
+                    <MaterialCommunityIcons name='plus-circle' size={30} color={colors.lightgray}></MaterialCommunityIcons>
                 </TouchableOpacity>
             </View>
         </TouchableWithoutFeedback >

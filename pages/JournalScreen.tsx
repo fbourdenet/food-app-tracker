@@ -8,6 +8,8 @@ import MealsRecap from '../components/MealsRecap'
 
 import { fonts } from '../constants/fonts'
 import { colors } from '../constants/colors'
+import Divider from '../components/Divider'
+import Header from '../components/Header'
 
 type Props = {}
 
@@ -16,13 +18,16 @@ const JournalScreen = () => {
         <SafeAreaView style={styles.safeAreaView}>
             <ScrollView>
                 <View style={styles.view}>
-                    <Text style={fonts.h1}>Aujourd'hui</Text>
+                    <Header />
                     <CaloriesRecap />
                     <Section title='Nutriments' children={<NutrientsRecap />}></Section>
                     <Section title='Alimentation'>
                         <MealsRecap icon="☕️" title="Petit Déjeuner" kcal={200} />
+                        <Divider />
                         <MealsRecap icon="🥗" title="Déjeuner" kcal={500} />
+                        <Divider />
                         <MealsRecap icon="🍲" title="Diner" kcal={700} />
+                        <Divider />
                         <MealsRecap icon="🍎" title="En-cas" kcal={150} />
                     </Section>
                     <Section title='Activités'>
