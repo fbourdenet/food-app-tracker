@@ -1,7 +1,7 @@
 
 import { View, Text, StyleSheet } from 'react-native'
 import React, { ReactNode, useRef, useCallback, RefObject } from 'react'
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { BottomSheetView, BottomSheetModal } from '@gorhom/bottom-sheet';
 import { colors } from '../constants/colors';
 
 type CustomBottomSheetProps = {
@@ -14,8 +14,8 @@ const CustomBottomSheet = ({ reference, children }: CustomBottomSheetProps) => {
     return (
         <BottomSheetModal
             ref={reference}
-            index={1}
-            snapPoints={["25%", "50%"]}
+            index={0}
+            snapPoints={["50%"]}
             enablePanDownToClose={true}
             backgroundStyle={{
                 display: 'none'
@@ -24,9 +24,9 @@ const CustomBottomSheet = ({ reference, children }: CustomBottomSheetProps) => {
                 backgroundColor: colors.white
             }}
         >
-            <View style={styles.container}>
+            <BottomSheetView style={styles.container}>
                 {children}
-            </View>
+            </BottomSheetView>
         </BottomSheetModal>
     )
 }

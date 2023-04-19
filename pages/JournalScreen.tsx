@@ -10,22 +10,20 @@ import Header from '../components/Header'
 import CustomBottomSheet from '../components/CustomBottomSheet'
 
 import { colors } from '../constants/colors'
-import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import {BottomSheetModal} from '@gorhom/bottom-sheet'
 import CustomDatePicker from '../components/CustomDatePicker'
 
-type Props = {}
 
 const JournalScreen = () => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
     const handleBottomSheetPress = () => {
-        bottomSheetModalRef?.current?.present()
+        bottomSheetModalRef?.current?.present();
     }
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
             <ScrollView>
                 <View style={styles.view}>
-
                     <Header icon="calendar-range" action={handleBottomSheetPress} />
                     <CaloriesRecap />
                     <Section title='Nutriments' children={<NutrientsRecap />}></Section>
