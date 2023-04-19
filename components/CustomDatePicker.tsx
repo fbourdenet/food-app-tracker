@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { colors } from '../constants/colors';
+import { fonts } from '../constants/fonts';
 
 type Props = {}
 
@@ -25,9 +26,14 @@ const CustomDatePicker = (props: Props) => {
                 selectedDayBackgroundColor: colors.green,
                 selectedDayTextColor: colors.white,
                 dayTextColor: colors.white,
+                textDayFontSize: 12,
+                textDayFontWeight: "500",
+                textDayStyle: {
+                    marginTop: 9
+                },
+                textDayHeaderFontWeight: "600",
                 todayBackgroundColor: colors.green,
                 todayTextColor: colors.white,
-                textDisabledColor: '#d9e1e8',
                 arrowColor: colors.green,
             }}
             onDayPress={day => {
