@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight } from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import { fonts } from '../constants/fonts'
+import { colors } from '../constants/colors';
 
 type MealRecapProps = {
     icon: string,
@@ -12,19 +13,21 @@ type MealRecapProps = {
 
 const MealsRecap = ({ icon, title, kcal }: MealRecapProps) => {
     return (
-        <View style={styles.mealContainer}>
-            <View style={styles.mealLeftContainer}>
-                <Text style={fonts.icon}>{icon}</Text>
-                <View style={styles.mealDescriptionContainer}>
-                    <Text style={fonts.h4}>{title}</Text>
-                    <Text>{kcal} kcal</Text>
+        <TouchableWithoutFeedback onPress={() => console.log("pressed")}>
+            <View style={styles.mealContainer}>
+                <View style={styles.mealLeftContainer}>
+                    <Text style={fonts.icon}>{icon}</Text>
+                    <View style={styles.mealDescriptionContainer}>
+                        <Text style={fonts.h4}>{title}</Text>
+                        <Text style={fonts.h5}>{kcal} kcal</Text>
+                    </View>
                 </View>
-            </View>
 
-            <TouchableOpacity>
-                <MaterialCommunityIcons name='plus' size={30}></MaterialCommunityIcons>
-            </TouchableOpacity>
-        </View>
+                <TouchableOpacity onPress={() => console.log("pressed2")}>
+                    <MaterialCommunityIcons name='plus-circle-outline' size={24} color={colors.lightgray}></MaterialCommunityIcons>
+                </TouchableOpacity>
+            </View>
+        </TouchableWithoutFeedback >
     )
 }
 

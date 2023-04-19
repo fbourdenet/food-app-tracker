@@ -1,7 +1,9 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { AnimatedCircularProgress } from 'react-native-circular-progress'
+
 import { colors } from '../constants/colors'
+import { fonts } from '../constants/fonts'
 
 const NutrientsRecap = () => {
     return (
@@ -13,11 +15,11 @@ const NutrientsRecap = () => {
                     lineCap="round"
                     rotation={0}
                     fill={20}
-                    children={() => <Text>20g</Text>}
+                    children={() => <Text style={fonts.p}>20g</Text>}
                     tintColor={colors.red}
-                    backgroundColor={colors.darkgray}
+                    backgroundColor={colors.gray}
                 />
-                <Text>Glucides</Text>
+                <Text style={fonts.p}>Glucides</Text>
             </View>
             <View style={styles.nutrientContainer}>
                 <AnimatedCircularProgress
@@ -26,11 +28,11 @@ const NutrientsRecap = () => {
                     lineCap="round"
                     rotation={0}
                     fill={70}
-                    children={() => <Text>70g</Text>}
+                    children={() => <Text style={fonts.p}>70g</Text>}
                     tintColor={colors.blue}
-                    backgroundColor={colors.darkgray}
+                    backgroundColor={colors.gray}
                 />
-                <Text>Lipides</Text>
+                <Text style={fonts.p}>Lipides</Text>
             </View>
             <View style={styles.nutrientContainer}>
                 <AnimatedCircularProgress
@@ -39,11 +41,11 @@ const NutrientsRecap = () => {
                     lineCap="round"
                     rotation={0}
                     fill={80}
-                    children={() => <Text>80g</Text>}
+                    children={() => <Text style={fonts.p}>80g</Text>}
                     tintColor={colors.green}
-                    backgroundColor={colors.darkgray}
+                    backgroundColor={colors.gray}
                 />
-                <Text>Protéines</Text>
+                <Text style={fonts.p}>Protéines</Text>
             </View>
         </View>
 

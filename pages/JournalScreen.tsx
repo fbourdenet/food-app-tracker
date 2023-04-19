@@ -7,6 +7,7 @@ import CaloriesRecap from '../components/CaloriesRecap'
 import MealsRecap from '../components/MealsRecap'
 
 import { fonts } from '../constants/fonts'
+import { colors } from '../constants/colors'
 
 type Props = {}
 
@@ -25,10 +26,7 @@ const JournalScreen = () => {
                         <MealsRecap icon="🍎" title="En-cas" kcal={150} />
                     </Section>
                     <Section title='Activités'>
-                        <MealsRecap icon="☕️" title="Petit Déjeuner" kcal={200} />
-                        <MealsRecap icon="🥗" title="Déjeuner" kcal={500} />
-                        <MealsRecap icon="🍲" title="Diner" kcal={700} />
-                        <MealsRecap icon="🍎" title="En-cas" kcal={150} />
+                        <MealsRecap icon="💪" title="Sport" kcal={200} />
                     </Section>                
                     </View>
             </ScrollView>
@@ -41,6 +39,7 @@ export default JournalScreen
 const styles = StyleSheet.create({
     safeAreaView: {
         flex: 1,
+        backgroundColor: colors.background
     },
     view: {
         padding: 20,

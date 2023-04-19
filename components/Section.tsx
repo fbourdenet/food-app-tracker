@@ -27,9 +27,18 @@ const styles = StyleSheet.create({
         gap: 10
     },
     subContainer: {
-        backgroundColor: colors.gray,
+        backgroundColor: colors.darkgray,
         borderRadius: 10,
         padding: 20,
-        gap: 20
+        gap: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+
+        elevation: 4,
     }
 });
