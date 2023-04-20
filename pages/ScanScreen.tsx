@@ -28,13 +28,8 @@ const ScanScreen = (props: Props) => {
         alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     };
 
-    if (hasPermission === null) {
-        console.log("d")
-        return <Text>Requesting for camera permission</Text>;
-    }
     if (hasPermission === false) {
-        console.log("g")
-        return <Text>No access to camera</Text>;
+        navigation.goBack();
     }
 
     return (
