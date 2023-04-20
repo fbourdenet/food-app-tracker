@@ -1,12 +1,14 @@
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from 'react'
 
-import AddMealScreen from '../pages/AddMealScreen'
 import BottomTabNavigation from './BottomTabNavigation'
+import AddMealScreen from '../pages/AddMealScreen'
+import ScanScreen from '../pages/ScanScreen'
 
 type StackNavigationParamList = {
     AddMeal: undefined,
-    BottomTabNavigation: undefined
+    BottomTabNavigation: undefined,
+    Scan: undefined
 }
 
 export type StackNavigationProps = NativeStackNavigationProp<StackNavigationParamList>
@@ -22,6 +24,7 @@ const StackNavigation = () => {
         >
             <Stack.Screen name="BottomTabNavigation" component={BottomTabNavigation} />
             <Stack.Screen name="AddMeal" component={AddMealScreen} />
+            <Stack.Screen name="Scan" component={ScanScreen} />
         </Stack.Navigator>
     )
 }

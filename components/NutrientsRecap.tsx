@@ -19,7 +19,7 @@ const NutrientsRecap = () => {
                     tintColor={colors.red}
                     backgroundColor={colors.gray}
                 />
-                <Text style={fonts.h6}>Glucides</Text>
+                <Text style={fonts.h4}>Glucides</Text>
             </View>
             <View style={styles.nutrientContainer}>
                 <AnimatedCircularProgress
@@ -32,7 +32,7 @@ const NutrientsRecap = () => {
                     tintColor={colors.blue}
                     backgroundColor={colors.gray}
                 />
-                <Text style={fonts.h6}>Lipides</Text>
+                <Text style={fonts.h4}>Lipides</Text>
             </View>
             <View style={styles.nutrientContainer}>
                 <AnimatedCircularProgress
@@ -45,7 +45,7 @@ const NutrientsRecap = () => {
                     tintColor={colors.green}
                     backgroundColor={colors.gray}
                 />
-                <Text style={fonts.h6}>Protéines</Text>
+                <Text style={fonts.h4}>Protéines</Text>
             </View>
         </View>
 
@@ -58,7 +58,7 @@ export default NutrientsRecap
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-between'
     },
     nutrientContainer: {
         gap: 15,
