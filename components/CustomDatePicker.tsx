@@ -1,14 +1,11 @@
-import { View, Text } from 'react-native'
+import { format } from 'date-fns'
 import React, { useState } from 'react'
 
-import { Calendar, LocaleConfig } from 'react-native-calendars';
+import { Calendar } from 'react-native-calendars';
 import { colors } from '../constants/colors';
-import { fonts } from '../constants/fonts';
 
-type Props = {}
-
-const CustomDatePicker = (props: Props) => {
-    const [selected, setSelected] = useState('');
+const CustomDatePicker = () => {
+    const [selected, setSelected] = useState(format(new Date(Date.now()), "yyyy-mm-dd"));
 
     return (
         <Calendar
@@ -36,8 +33,8 @@ const CustomDatePicker = (props: Props) => {
                 todayTextColor: colors.white,
                 arrowColor: colors.green,
             }}
-            onDayPress={day => {
-                setSelected(day.dateString);
+            onDayPress={(daySelected) => {
+                setSelected(daySelected.dateString);
             }}
             markedDates={{
                 [selected]: {

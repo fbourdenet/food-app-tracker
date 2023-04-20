@@ -1,21 +1,19 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import JournalScreen from "../pages/JournalScreen";
 import ProfileScreen from "../pages/ProfileScreen";
 import { colors } from "../constants/colors";
 
-type bottomTabNavigatorLists = {
+type BottomTabNavigatorParamList = {
     Journal: undefined,
     Profil: undefined
 }
 
-const bottomTabNavigator = createBottomTabNavigator<bottomTabNavigatorLists>();
+const bottomTabNavigator = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
 function BottomTabNavigation() {
     return (
-        <NavigationContainer>
             <bottomTabNavigator.Navigator screenOptions={{
                 headerShown: false,
                 tabBarStyle: {
@@ -34,7 +32,6 @@ function BottomTabNavigation() {
                     tabBarIcon: ({ focused }) => <MaterialCommunityIcons name='account' size={30} color={focused ? colors.green : colors.lightgray} />
                 }} />
             </bottomTabNavigator.Navigator>
-        </NavigationContainer>
     )
 }
 

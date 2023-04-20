@@ -6,15 +6,17 @@ import { fonts } from '../constants/fonts'
 import { colors } from '../constants/colors';
 
 type HeaderProps = {
-    icon: "calendar-range",
-    action: Function
+    title?: string,
+    // TODO : Left icon and right icon {icon, action}
+    icon?: "calendar-range",
+    action?: Function
 }
 
-const Header = ({icon, action}: HeaderProps) => {
+const Header = ({title = "Aujourd'hui", icon, action}: HeaderProps) => {
 
     return (
         <View style={styles.container}>
-            <Text style={fonts.h1}>Aujourd'hui</Text>
+            <Text style={fonts.h1}>{title}</Text>
             <MaterialCommunityIcons name={icon} size={30} color={colors.green} onPress={() => action()} />
         </View>
     )

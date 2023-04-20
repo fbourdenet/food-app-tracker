@@ -4,6 +4,8 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import { fonts } from '../constants/fonts'
 import { colors } from '../constants/colors';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProps } from '../navigation/StackNavigation';
 
 type MealRecapProps = {
     icon: string,
@@ -12,6 +14,8 @@ type MealRecapProps = {
 }
 
 const MealsRecap = ({ icon, title, kcal }: MealRecapProps) => {
+    const navigation = useNavigation<StackNavigationProps>();
+
     return (
         <TouchableWithoutFeedback onPress={() => console.log("pressed")}>
             <View style={styles.mealContainer}>
@@ -23,7 +27,7 @@ const MealsRecap = ({ icon, title, kcal }: MealRecapProps) => {
                     </View>
                 </View>
 
-                <TouchableOpacity onPress={() => console.log("pressed2")}>
+                <TouchableOpacity onPress={() => navigation.navigate("AddMeal")}>
                     <MaterialCommunityIcons name='plus-circle' size={30} color={colors.lightgray}></MaterialCommunityIcons>
                 </TouchableOpacity>
             </View>

@@ -1,7 +1,7 @@
 
 import { View, Text, StyleSheet } from 'react-native'
 import React, { ReactNode, useRef, useCallback, RefObject } from 'react'
-import { BottomSheetView, BottomSheetModal } from '@gorhom/bottom-sheet';
+import { BottomSheetView, BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { colors } from '../constants/colors';
 
 type CustomBottomSheetProps = {
@@ -19,6 +19,13 @@ const CustomBottomSheet = ({ reference, children }: CustomBottomSheetProps) => {
             enablePanDownToClose={true}
             backgroundStyle={{
                 display: 'none'
+            }}
+            backdropComponent={(props) => {
+                return <BottomSheetBackdrop
+                    disappearsOnIndex={-1}
+                    appearsOnIndex={0}
+                    {...props}
+                />
             }}
             handleIndicatorStyle={{
                 backgroundColor: colors.white

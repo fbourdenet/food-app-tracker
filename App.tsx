@@ -1,16 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import {
-  BottomSheetModal,
   BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
 
 import BottomTabNavigation from './navigation/BottomTabNavigation';
+import StackNavigation from './navigation/StackNavigation';
 
 export default function App() {
   return (
     <BottomSheetModalProvider>
-      <BottomTabNavigation />
+      <NavigationContainer>
+        <StackNavigation />
+      </NavigationContainer>
     </BottomSheetModalProvider>
   );
 }
