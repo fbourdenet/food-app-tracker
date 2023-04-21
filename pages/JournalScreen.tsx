@@ -1,17 +1,17 @@
 import { View, Text, SafeAreaView, ScrollView, StyleSheet, } from 'react-native'
 import React, { useRef } from 'react'
 
-import Section from '../components/Section'
-import NutrientsRecap from '../components/NutrientsRecap'
-import CaloriesRecap from '../components/CaloriesRecap'
-import MealsRecap from '../components/MealsRecap'
-import Divider from '../components/Divider'
-import Header from '../components/Header'
-import CustomBottomSheet from '../components/CustomBottomSheet'
+import Section from '../components/shared/Section'
+import NutrientsRecap from '../components/Journal/NutrientsRecap'
+import CaloriesRecap from '../components/Journal/CaloriesRecap'
+import MealsRecap from '../components/Journal/MealsRecap'
+import Divider from '../components/shared/Divider'
+import Header from '../components/shared/Header'
+import CustomBottomSheet from '../components/shared/CustomBottomSheet'
 
 import { colors } from '../constants/colors'
 import {BottomSheetModal} from '@gorhom/bottom-sheet'
-import CustomDatePicker from '../components/CustomDatePicker'
+import CustomDatePicker from '../components/shared/CustomDatePicker'
 
 const JournalScreen = () => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);

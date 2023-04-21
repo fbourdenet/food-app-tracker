@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import React, { useState } from 'react'
 
 import { Calendar } from 'react-native-calendars';
-import { colors } from '../constants/colors';
+import { colors } from '../../constants/colors';
 
 const CustomDatePicker = () => {
     const [selected, setSelected] = useState(format(new Date(Date.now()), "yyyy-mm-dd"));

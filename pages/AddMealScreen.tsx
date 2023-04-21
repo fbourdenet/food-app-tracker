@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { colors } from '../constants/colors'
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import ScreenHeader from '../components/ScreenHeader'
+import ScreenHeader from '../components/shared/ScreenHeader'
 import { StackNavigationProps } from '../types/StackNavigationProps';
 
 type Props = {}

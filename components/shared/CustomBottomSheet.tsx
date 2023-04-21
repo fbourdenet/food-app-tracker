@@ -2,7 +2,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, { ReactNode, useRef, useCallback, RefObject } from 'react'
 import { BottomSheetView, BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
-import { colors } from '../constants/colors';
+import { colors } from '../../constants/colors';
 
 type CustomBottomSheetProps = {
     reference: RefObject<BottomSheetModal>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 import { BarCodeScanner, BarCodeScannerResult } from 'expo-barcode-scanner';
 import { colors } from '../constants/colors';
-import ScreenHeader from '../components/ScreenHeader';
+import ScreenHeader from '../components/shared/ScreenHeader';
 import { useNavigation } from '@react-navigation/native';
 
 

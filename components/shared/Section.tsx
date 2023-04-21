@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, { ReactNode } from 'react'
 
-import { colors } from '../constants/colors'
-import { fonts } from '../constants/fonts'
+import { colors } from '../../constants/colors'
+import { fonts } from '../../constants/fonts'
 
 type SectionProps = {
     title?: string,
@@ -31,8 +31,11 @@ const styles = StyleSheet.create({
     subContainer: {
         backgroundColor: colors.darkgray,
         borderRadius: 10,
-        padding: 20,
-        gap: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 15,
+        paddingBottom: 15,
+        gap: 15,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

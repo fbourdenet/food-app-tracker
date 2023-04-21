@@ -2,10 +2,10 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
 import { Slider } from '@miblanchard/react-native-slider';
-import { colors } from '../constants/colors';
-import { fonts } from '../constants/fonts';
+import { colors } from '../../constants/colors';
+import { fonts } from '../../constants/fonts';
 import { useTranslation } from 'react-i18next';
-import { capitalize } from '../utils/utils';
+import { capitalize } from '../../utils/utils';
 
 const CaloriesRecap = () => {
     const { t } = useTranslation();

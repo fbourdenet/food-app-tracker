@@ -1,8 +1,8 @@
 import { Text, Button, StyleSheet } from 'react-native'
 import React from 'react'
-import { colors } from '../constants/colors'
+import { colors } from '../../constants/colors'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
-import { fonts } from '../constants/fonts'
+import { fonts } from '../../constants/fonts'
 
 type CustomButtonProps = {
     title: string,

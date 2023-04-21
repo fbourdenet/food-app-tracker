@@ -2,10 +2,10 @@ import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Tou
 import React from 'react'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-import { fonts } from '../constants/fonts'
-import { colors } from '../constants/colors';
+import { fonts } from '../../constants/fonts'
+import { colors } from '../../constants/colors';
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProps } from '../types/StackNavigationProps';
+import { StackNavigationProps } from '../../types/StackNavigationProps';
 
 type MealRecapProps = {
     icon: string,

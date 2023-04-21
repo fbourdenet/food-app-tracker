@@ -2,10 +2,10 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-import { fonts } from '../constants/fonts'
-import { colors } from '../constants/colors';
+import { fonts } from '../../constants/fonts'
+import { colors } from '../../constants/colors';
 import { useTranslation } from 'react-i18next';
-import { capitalize } from '../utils/utils';
+import { capitalize } from '../../utils/utils';
 
 type HeaderProps = {
     title?: string,

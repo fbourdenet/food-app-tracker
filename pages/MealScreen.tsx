@@ -4,13 +4,13 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 
 import { colors } from '../constants/colors'
 
-import ScreenHeader from '../components/ScreenHeader'
+import ScreenHeader from '../components/shared/ScreenHeader'
 import { MealScreenRouteProps } from '../types/MealScreenRouteProps';
 import { StackNavigationProps } from '../types/StackNavigationProps';
-import Section from '../components/Section'
-import Meal from '../components/Meal'
-import Divider from '../components/Divider'
-import CustomButton from '../components/CustomButton'
+import Section from '../components/shared/Section'
+import Meal from '../components/Journal/MealItem'
+import Divider from '../components/shared/Divider'
+import CustomButton from '../components/shared/CustomButton'
 
 const MealScreen = () => {
     const route = useRoute<MealScreenRouteProps>();
@@ -33,7 +33,6 @@ const MealScreen = () => {
             </View>
             <View style={styles.footer}>
                 <CustomButton title='Ajouter un aliment' action={() => navigation.navigate("AddMeal")} />
-
             </View>
         </SafeAreaView>
     )

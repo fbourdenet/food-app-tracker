@@ -1,16 +1,16 @@
 import { View, Text, StyleSheet,Image } from 'react-native'
 import React from 'react'
-import { fonts } from '../constants/fonts'
-import { colors } from '../constants/colors'
+import { fonts } from '../../constants/fonts'
+import { colors } from '../../constants/colors'
 
-type MealProps = {
+type MealItemProps = {
     icon?: string,
     name: string,
     kcal: number,
     weigth: number
 }
 
-const Meal = ({ icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png", name, kcal, weigth }: MealProps) => {
+const MealItem = ({ icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png", name, kcal, weigth }: MealItemProps) => {
     return (
         <View style={styles.container}>
             <Image
@@ -25,7 +25,6 @@ const Meal = ({ icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a
                     <Text style={fonts.h5}>{weigth} g</Text>
                 </View>
             </View>
-
         </View>
     )
 }
@@ -56,4 +55,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Meal
+export default MealItem

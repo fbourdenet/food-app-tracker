@@ -3,9 +3,9 @@ import React from 'react'
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-import { colors } from '../constants/colors'
-import { fonts } from '../constants/fonts'
-import { Icon } from '../types/Icon';
+import { colors } from '../../constants/colors'
+import { fonts } from '../../constants/fonts'
+import { Icon } from '../../types/Icon';
 
 type ScreenHeaderProps = {
     title?: string,

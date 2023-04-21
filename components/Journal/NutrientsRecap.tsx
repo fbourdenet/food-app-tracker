@@ -2,8 +2,8 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { AnimatedCircularProgress } from 'react-native-circular-progress'
 
-import { colors } from '../constants/colors'
-import { fonts } from '../constants/fonts'
+import { colors } from '../../constants/colors'
+import { fonts } from '../../constants/fonts'
 
 const NutrientsRecap = () => {
     return (
@@ -58,7 +58,8 @@ export default NutrientsRecap
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-evenly',
+        gap: 20
     },
     nutrientContainer: {
         gap: 15,
