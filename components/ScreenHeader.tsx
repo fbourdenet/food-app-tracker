@@ -29,17 +29,17 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: 10,
+        paddingTop: 15,
     },
     leftIcon: {
         position: "absolute",
         left: 10,
-        top: -3
+        top: 2
     },
     rightIcon: {
         position: "absolute",
         right: 20,
-        top: 5
+        top: 10
     },
 })
 
