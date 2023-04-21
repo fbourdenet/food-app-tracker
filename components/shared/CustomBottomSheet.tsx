@@ -1,6 +1,6 @@
 
-import { View, Text, StyleSheet } from 'react-native'
-import React, { ReactNode, useRef, useCallback, RefObject } from 'react'
+import { StyleSheet } from 'react-native'
+import React, { ReactNode, RefObject } from 'react'
 import { BottomSheetView, BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { colors } from '../../constants/colors';
 
@@ -10,7 +10,8 @@ type CustomBottomSheetProps = {
 }
 
 const CustomBottomSheet = ({ reference, children }: CustomBottomSheetProps) => {
-
+    console.log("render CustomBottomSheet");
+    
     return (
         <BottomSheetModal
             ref={reference}
@@ -38,8 +39,6 @@ const CustomBottomSheet = ({ reference, children }: CustomBottomSheetProps) => {
     )
 }
 
-export default CustomBottomSheet
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -49,3 +48,6 @@ const styles = StyleSheet.create({
         gap: 10
     },
 })
+
+export default CustomBottomSheet
+

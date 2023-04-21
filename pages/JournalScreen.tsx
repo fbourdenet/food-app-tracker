@@ -15,6 +15,7 @@ import CustomDatePicker from '../components/shared/CustomDatePicker'
 import ActivitiesRecap from '../components/Journal/ActivitiesRecap'
 
 const JournalScreen = () => {
+    console.log("render journalscreen");
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
     const handleBottomSheetPress = () => {
@@ -44,7 +45,6 @@ const JournalScreen = () => {
                         <CustomDatePicker></CustomDatePicker>
                     </CustomBottomSheet>
                 </View>
-
             </ScrollView>
 
         </SafeAreaView>

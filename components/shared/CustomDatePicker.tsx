@@ -1,4 +1,3 @@
-import { format } from 'date-fns'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 
@@ -9,15 +8,20 @@ import { getLocales } from 'expo-localization';
 import CustomButton from './CustomButton';
 import { useBottomSheetModal } from '@gorhom/bottom-sheet';
 
+type CustomDatePickerProps = {
+    date?: string;
+}
 
-const CustomDatePicker = () => {
+const CustomDatePicker = ({ date = "" }: CustomDatePickerProps) => {
+    console.log("render customdatepicker");
     // format(new Date(Date.now()), "yyyy-mm-dd")
-    const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState(date);
     const { dismiss } = useBottomSheetModal();
+
     const languageCode = getLocales()[0].languageCode;
 
-    LocaleConfig.locales[getLocales()[0].languageCode] = getLocalsCalendar();
-    LocaleConfig.defaultLocale = getLocales()[0].languageCode;
+    LocaleConfig.locales[languageCode] = getLocalsCalendar();
+    LocaleConfig.defaultLocale = languageCode;
 
     return (
         <>
@@ -59,7 +63,6 @@ const CustomDatePicker = () => {
             <View style={styles.buttonContainer}>
                 <CustomButton title="Confirmer" action={dismiss}></CustomButton>
             </View>
-
         </>
     )
 }
