@@ -1,14 +1,35 @@
 {
+    "JANUARY": "janvier",
+    "FEBRUARY": "février",
+    "MARCH": "mars",
+    "APRIL": "avril",
+    "MAY": "mai",
+    "JUNE": "juin",
+    "JULY": "juillet",
+    "AUGUST": "août",
+    "SEPTEMBER": "septembre",
+    "OCTOBER": "octobre",
+    "NOVEMBER": "novembre",
+    "DECEMBER": "decembre",
+
+    "MONDAY": "lun.",
+    "TUESDAY": "mar.",
+    "WEDNESDAY": "mer.",
+    "THURSDAY": "jeu.",
+    "FRIDAY": "ven.",
+    "SATURDAY": "sam.",
+    "SUNDAY": "dim.",
+
     "TODAY": "aujourd'hui",
     "GOAL": "objectif",
-    "CARBS" : "glucides",
-    "PROTEIN" : "protéines",
-    "FAT" : "lipides",
+    "CARBS": "glucides",
+    "PROTEIN": "protéines",
+    "FAT": "lipides",
     "SCAN": "scanner",
     "CALORIES": "calories",
 
-    "LEFT_CALORIES" : "vous pouvez encore manger",
+    "LEFT_CALORIES": "vous pouvez encore manger",
     "EATEN_CALORIES": "calories mangées",
-    "SEARCH_FOOD" : "rechercher un aliment",
-    "ADD_FOOD" : "ajouter un aliment"
+    "SEARCH_FOOD": "rechercher un aliment",
+    "ADD_FOOD": "ajouter un aliment"
 }

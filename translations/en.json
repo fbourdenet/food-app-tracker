@@ -1,14 +1,35 @@
 {
+    "JANUARY": "january",
+    "FEBRUARY": "february",
+    "MARCH": "march",
+    "APRIL": "april",
+    "MAY": "may",
+    "JUNE": "june",
+    "JULY": "july",
+    "AUGUST": "august",
+    "SEPTEMBER": "september",
+    "OCTOBER": "october",
+    "NOVEMBER": "november",
+    "DECEMBER": "december",
+
+    "MONDAY": "mon.",
+    "TUESDAY": "tue.",
+    "WEDNESDAY": "wed.",
+    "THURSDAY": "thu.",
+    "FRIDAY": "fri.",
+    "SATURDAY": "sat.",
+    "SUNDAY": "sun.",
+
     "TODAY": "today",
     "GOAL": "goal",
-    "CARBS" : "carbs",
-    "PROTEIN" : "protein",
-    "FAT" : "fat",
+    "CARBS": "carbs",
+    "PROTEIN": "protein",
+    "FAT": "fat",
     "SCAN": "scan",
     "CALORIES": "calories",
 
-    "LEFT_CALORIES" : "you can still eat",
+    "LEFT_CALORIES": "you can still eat",
     "EATEN_CALORIES": "calories eaten",
-    "SEARCH_FOOD" : "search a food",
-    "ADD_FOOD" : "add a food"
+    "SEARCH_FOOD": "search a food",
+    "ADD_FOOD": "add a food"
 }

@@ -1,15 +1,23 @@
 import { format } from 'date-fns'
 import React, { useState } from 'react'
 
-import { Calendar } from 'react-native-calendars';
+import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { colors } from '../../constants/colors';
+import { getLocalsCalendar } from '../../utils/utils';
+import { getLocales } from 'expo-localization';
+
 
 const CustomDatePicker = () => {
-    const [selected, setSelected] = useState(format(new Date(Date.now()), "yyyy-mm-dd"));
+    // format(new Date(Date.now()), "yyyy-mm-dd")
+    const [selected, setSelected] = useState('');
+    const languageCode = getLocales()[0].languageCode;
+
+    LocaleConfig.locales[getLocales()[0].languageCode] = getLocalsCalendar();
+    LocaleConfig.defaultLocale = getLocales()[0].languageCode;
 
     return (
         <Calendar
-            style={{ 
+            style={{
                 backgroundColor: colors.darkgray,
             }}
             firstDay={1}
