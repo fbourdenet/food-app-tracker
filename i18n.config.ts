@@ -1,5 +1,6 @@
 import i18n, { Resource } from "i18next";
 import { initReactI18next } from "react-i18next";
+import { getLocales } from 'expo-localization';
 
 import { en, fr } from "./translations";
 
@@ -13,7 +14,7 @@ i18n.use(initReactI18next).init({
             translation: fr
         }
     },
-    lng: "fr",
+    lng: getLocales()[0].languageCode,
     fallbackLng: "en",
     interpolation: {
         escapeValue: false,
