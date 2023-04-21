@@ -12,7 +12,7 @@ const ProfileScreen = () => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.view}>
-        <Header title="Profil" icon='cog' />
+        <Header title="Profil" icon="cog-outline" />
         <Section>
           <ProfileItem title='Nom' value='Florian' />
           <Divider />

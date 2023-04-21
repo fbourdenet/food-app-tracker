@@ -24,12 +24,12 @@ function BottomTabNavigation() {
                 <bottomTabNavigator.Screen name="Journal" component={JournalScreen} options={{
                     tabBarActiveTintColor: colors.green,
                     tabBarInactiveTintColor: colors.lightgray,
-                    tabBarIcon: ({ focused }) => <MaterialCommunityIcons name='book-open' size={30} color={focused ? colors.green : colors.lightgray} />
+                    tabBarIcon: ({ focused }) => <MaterialCommunityIcons name='book-open-outline' size={30} color={focused ? colors.green : colors.lightgray} />
                 }} />
                 <bottomTabNavigator.Screen name="Profil" component={ProfileScreen} options={{
                     tabBarActiveTintColor: colors.green,
                     tabBarInactiveTintColor: colors.lightgray,
-                    tabBarIcon: ({ focused }) => <MaterialCommunityIcons name='account' size={30} color={focused ? colors.green : colors.lightgray} />
+                    tabBarIcon: ({ focused }) => <MaterialCommunityIcons name='account-outline' size={30} color={focused ? colors.green : colors.lightgray} />
                 }} />
             </bottomTabNavigator.Navigator>
     )

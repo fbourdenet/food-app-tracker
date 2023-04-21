@@ -13,7 +13,7 @@ const SectionProfileItem = ({ title, value }: SectionProfileItemProps) => {
     return (
         <View style={styles.container}>
             <Text style={fonts.h4}>{title}</Text>
-            <Text style={fonts.h5}>{value}</Text>
+            <Text style={[fonts.h4, styles.value]}>{value}</Text>
         </View>
     )
 }
@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         height: 20
     },
+    value: {
+        color: colors.lightgray,
+        fontWeight: "500"
+    }
 })
 
 export default SectionProfileItem

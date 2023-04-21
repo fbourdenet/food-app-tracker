@@ -9,8 +9,7 @@ import { capitalize } from '../../utils/utils';
 
 type HeaderProps = {
     title?: string,
-    // TODO : Left icon and right icon {icon, action}
-    icon?: "calendar-range" | "cog",
+    icon?: "calendar-range" | "cog-outline",
     action?: Function
 }
 
