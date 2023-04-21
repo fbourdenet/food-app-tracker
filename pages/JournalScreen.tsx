@@ -12,6 +12,7 @@ import CustomBottomSheet from '../components/shared/CustomBottomSheet'
 import { colors } from '../constants/colors'
 import {BottomSheetModal} from '@gorhom/bottom-sheet'
 import CustomDatePicker from '../components/shared/CustomDatePicker'
+import ActivitiesRecap from '../components/Journal/ActivitiesRecap'
 
 const JournalScreen = () => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -37,7 +38,7 @@ const JournalScreen = () => {
                         <MealsRecap icon="🍎" title="En-cas" kcal={150} />
                     </Section>
                     <Section title='Activités'>
-                        <MealsRecap icon="💪" title="Sport" kcal={200} />
+                        <ActivitiesRecap icon="😎" title="Sport" kcal={73} />
                     </Section>
                     <CustomBottomSheet reference={bottomSheetModalRef}>
                         <CustomDatePicker></CustomDatePicker>

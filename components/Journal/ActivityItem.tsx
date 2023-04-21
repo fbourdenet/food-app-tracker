@@ -3,26 +3,23 @@ import React from 'react'
 import { fonts } from '../../constants/fonts'
 import { colors } from '../../constants/colors'
 
-type MealItemProps = {
+type ActivityItemProps = {
     icon?: string,
     name: string,
     kcal: number,
     weigth: number
 }
 
-const MealItem = ({ icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png", name, kcal, weigth }: MealItemProps) => {
+const ActivityItem = ({ icon = "💪", name, kcal, weigth }: ActivityItemProps) => {
     return (
         <View style={styles.container}>
-            <Image
-                style={{width: 30, height: 30, resizeMode: "contain", borderRadius: 5, backgroundColor: colors.white}}
-                source={{uri: icon}}
-            />
+            <Text style={fonts.icon}>{icon}</Text>
             <View style={styles.childContainer}>
                 <Text style={fonts.h4}>{name}</Text>
                 <View style={styles.mealDescriptionContainer}>
                     <Text style={[fonts.h5, styles.kcal]}>{kcal} kcal</Text>
-                    <Text style={[fonts.tiny, styles.separator]}>●</Text>
-                    <Text style={fonts.h5}>{weigth} g</Text>
+                    {/* <Text style={[fonts.tiny, styles.separator]}>●</Text>
+                    <Text style={fonts.h5}>{weigth} g</Text> */}
                 </View>
             </View>
         </View>
@@ -55,4 +52,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default MealItem
+export default ActivityItem
