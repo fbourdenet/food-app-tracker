@@ -13,9 +13,9 @@ import { colors } from '../constants/colors'
 import {BottomSheetModal} from '@gorhom/bottom-sheet'
 import CustomDatePicker from '../components/CustomDatePicker'
 
-
 const JournalScreen = () => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
     const handleBottomSheetPress = () => {
         bottomSheetModalRef?.current?.present();
     }
@@ -24,7 +24,7 @@ const JournalScreen = () => {
         <SafeAreaView style={styles.safeAreaView}>
             <ScrollView>
                 <View style={styles.view}>
-                    <Header icon="calendar-range" action={handleBottomSheetPress} />
+                    <Header title="TODAY" icon="calendar-range" action={handleBottomSheetPress} />
                     <CaloriesRecap />
                     <Section title='Nutriments' children={<NutrientsRecap />}></Section>
                     <Section title='Alimentation'>

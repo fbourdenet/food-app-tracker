@@ -45,5 +45,8 @@ export const fonts = StyleSheet.create({
     icon: {
         fontSize: 25,
         color: colors.white
+    },
+    capitalize: {
+        textTransform: "lowercase"
     }
 })

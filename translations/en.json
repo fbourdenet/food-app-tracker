@@ -1,0 +1,14 @@
+{
+    "TODAY": "today",
+    "GOAL": "goal",
+    "CARBS" : "carbs",
+    "PROTEIN" : "protein",
+    "FAT" : "fat",
+    "SCAN": "scan",
+    "CALORIES": "calories",
+
+    "LEFT_CALORIES" : "You can still eat",
+    "EATEN_CALORIES": "calories eaten",
+    "SEARCH_FOOD" : "search a food",
+    "ADD_FOOD" : "add a food"
+}

@@ -4,11 +4,15 @@ import React from 'react'
 import { Slider } from '@miblanchard/react-native-slider';
 import { colors } from '../constants/colors';
 import { fonts } from '../constants/fonts';
+import { useTranslation } from 'react-i18next';
+import { capitalize } from '../utils/utils';
 
 const CaloriesRecap = () => {
+    const { t } = useTranslation();
+
     return (
         <View style={styles.container}>
-            <Text style={fonts.p}>Vous pouvez manger encore 628 calories</Text>
+            <Text style={fonts.p}>{capitalize(t("LEFT_CALORIES"))} 628 {t("CALORIES")}</Text>
             <Slider
                 minimumValue={0}
                 maximumValue={100}
@@ -20,8 +24,8 @@ const CaloriesRecap = () => {
                 disabled
             />
             <View style={styles.caloriesContainer}>
-                <Text style={fonts.p}>1200 calories absorbées</Text>
-                <Text style={fonts.p}>Objectif: 1920 kcal</Text>
+                <Text style={fonts.p}>1200 {t("EATEN_CALORIES")}</Text>
+                <Text style={fonts.p}>{capitalize(t("GOAL"))}: 1920 kcal</Text>
             </View>
         </View>
     )
