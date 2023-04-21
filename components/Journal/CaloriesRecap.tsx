@@ -40,5 +40,5 @@ const styles = StyleSheet.create({
     caloriesContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between'
-    }
+    },
 });
