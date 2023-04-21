@@ -35,10 +35,15 @@ export const fonts = StyleSheet.create({
     p: {
         fontSize: 12,
         fontWeight: "500",
-        color: "white"
+        color: colors.white
+    },
+    tiny: {
+        fontSize: 6,
+        fontWeight: "500",
+        color: colors.white
     },
     icon: {
         fontSize: 25,
-        color: "white"
+        color: colors.white
     }
 })

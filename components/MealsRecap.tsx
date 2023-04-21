@@ -5,7 +5,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { fonts } from '../constants/fonts'
 import { colors } from '../constants/colors';
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProps } from '../navigation/StackNavigation';
+import { StackNavigationProps } from '../types/StackNavigationProps';
 
 type MealRecapProps = {
     icon: string,
@@ -17,7 +17,7 @@ const MealsRecap = ({ icon, title, kcal }: MealRecapProps) => {
     const navigation = useNavigation<StackNavigationProps>();
 
     return (
-        <TouchableWithoutFeedback onPress={() => console.log("pressed")}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Meal", {title: title})}>
             <View style={styles.mealContainer}>
                 <View style={styles.mealLeftContainer}>
                     <Text style={fonts.icon}>{icon}</Text>

@@ -6,7 +6,7 @@ import { colors } from '../constants/colors'
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import ScreenHeader from '../components/ScreenHeader'
-import { StackNavigationProps } from '../navigation/StackNavigation'
+import { StackNavigationProps } from '../types/StackNavigationProps';
 
 type Props = {}
 
@@ -17,7 +17,7 @@ const AddMealScreen = (props: Props) => {
     return (
         <SafeAreaView style={styles.safeAreaView}>
             <ScreenHeader
-                title='Rechercher un aliment'
+                title='Ajouter un aliment'
                 leftIcon={{ name: "chevron-left", action: navigation.goBack }}
                 rightIcon={{ name: "qrcode-scan", action: () => navigation.navigate("Scan") }}
             />

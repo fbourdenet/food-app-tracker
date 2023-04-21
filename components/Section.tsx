@@ -5,14 +5,16 @@ import { colors } from '../constants/colors'
 import { fonts } from '../constants/fonts'
 
 type SectionProps = {
-    title: string,
+    title?: string,
     children: ReactNode
 }
 
 const Section = ({ title, children }: SectionProps) => {
     return (
         <View style={styles.container}>
-            <Text style={fonts.h2}>{title}</Text>
+            {title &&
+                <Text style={fonts.h2}>{title}</Text>
+            }
             <View style={styles.subContainer}>
                 {children}
             </View>
