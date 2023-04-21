@@ -16,7 +16,7 @@ const CustomBottomSheet = ({ reference, children }: CustomBottomSheetProps) => {
         <BottomSheetModal
             ref={reference}
             index={0}
-            snapPoints={["50%"]}
+            snapPoints={["55%"]}
             enablePanDownToClose={true}
             backgroundStyle={{
                 display: 'none'
