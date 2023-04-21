@@ -7,7 +7,7 @@
     "SCAN": "scanner",
     "CALORIES": "calories",
 
-    "LEFT_CALORIES" : "Vous pouvez encore manger",
+    "LEFT_CALORIES" : "vous pouvez encore manger",
     "EATEN_CALORIES": "calories mangées",
     "SEARCH_FOOD" : "rechercher un aliment",
     "ADD_FOOD" : "ajouter un aliment"
