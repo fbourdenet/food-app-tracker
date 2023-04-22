@@ -1,4 +1,4 @@
-import { SafeAreaView, View, StyleSheet, TextInput, TouchableWithoutFeedback } from 'react-native'
+import { SafeAreaView, View, StyleSheet, TextInput, TouchableWithoutFeedback, ScrollView, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
@@ -7,12 +7,27 @@ import { colors } from '../constants/colors'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import ScreenHeader from '../components/shared/ScreenHeader'
 import { StackNavigationProps } from '../types/StackNavigationProps';
+import { Product } from '../types/OpenFoodFacts';
+import MealItem from '../components/Journal/MealItem'
+import Section from '../components/shared/Section';
+import Divider from '../components/shared/Divider';
+import { getProductsByName } from '../api/api';
 
-type Props = {}
+const AddMealScreen = () => {
+    const [meals, setMeals] = useState<Product[] | null>(null);
+    const [meal, setMeal] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
 
-const AddMealScreen = (props: Props) => {
-    const [meal, setMeal] = useState<string>("")
     const navigation = useNavigation<StackNavigationProps>();
+
+    const getProducts = async (name: string) => {
+        setLoading(true);
+
+        let products: Product[] = await getProductsByName(name);
+        setMeals(products);
+        
+        setLoading(false);
+    }
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
@@ -23,7 +38,7 @@ const AddMealScreen = (props: Props) => {
             />
             <View style={styles.view}>
                 <View style={styles.inputContainer}>
-                    <MaterialCommunityIcons color={colors.white} name='magnify' size={20} />
+                    <MaterialCommunityIcons color={colors.lightgray} name='magnify' size={20} />
                     <TextInput
                         style={styles.input}
                         onChangeText={(value) => setMeal(value)}
@@ -32,6 +47,7 @@ const AddMealScreen = (props: Props) => {
                         autoCorrect={false}
                         keyboardAppearance='dark'
                         placeholderTextColor={colors.lightgray}
+                        onSubmitEditing={(e) => getProducts(e.nativeEvent.text)}
                     />
                     {meal.length > 0 &&
                         <TouchableWithoutFeedback onPress={() => setMeal("")}>
@@ -39,7 +55,29 @@ const AddMealScreen = (props: Props) => {
                         </TouchableWithoutFeedback>
                     }
                 </View>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    {loading &&
+                        <ActivityIndicator size="small" color={colors.lightgray} />
+                    }
+                    {meals && !loading &&
+                        <Section>
+                            {
+                                meals.map((meal, index) => {
+                                    return (
+                                        <React.Fragment key={meal._id}>
+                                            <MealItem icon={meal.selected_images.front.small.fr} name={meal.product_name} kcal={meal.nutriments.energy} weigth={meal.quantity} />
+                                            {meals.length - 1 !== index &&
+                                                <Divider />
+                                            }
+                                        </React.Fragment>
+                                    )
+                                })
+                            }
+                        </Section>
+                    }
+                </ScrollView>
             </View>
+
         </SafeAreaView>
     )
 }
@@ -66,7 +104,7 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
-        color: colors.white
+        color: colors.white,
     }
 })
 

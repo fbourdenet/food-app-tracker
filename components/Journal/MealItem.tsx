@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet,Image } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import { fonts } from '../../constants/fonts'
 import { colors } from '../../constants/colors'
@@ -7,22 +7,26 @@ type MealItemProps = {
     icon?: string,
     name: string,
     kcal: number,
-    weigth: number
+    weigth: string
 }
 
-const MealItem = ({ icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png", name, kcal, weigth }: MealItemProps) => {
+const MealItem = ({ icon, name, kcal, weigth }: MealItemProps) => {
     return (
         <View style={styles.container}>
             <Image
-                style={{width: 30, height: 30, resizeMode: "contain", borderRadius: 5, backgroundColor: colors.white}}
-                source={{uri: icon}}
+                style={{ width: 40, height: 40, resizeMode: "contain", borderRadius: 5, backgroundColor: colors.white }}
+                source={{ uri: icon }}
             />
             <View style={styles.childContainer}>
-                <Text style={fonts.h4}>{name}</Text>
+                <Text style={fonts.h4} numberOfLines={1}>{name}</Text>
                 <View style={styles.mealDescriptionContainer}>
                     <Text style={[fonts.h5, styles.kcal]}>{kcal} kcal</Text>
-                    <Text style={[fonts.tiny, styles.separator]}>●</Text>
-                    <Text style={fonts.h5}>{weigth} g</Text>
+                    {weigth &&
+                        <>
+                            <Text style={[fonts.tiny, styles.separator]}>●</Text>
+                            <Text style={fonts.h5}>{weigth}</Text>
+                        </>
+                    }
                 </View>
             </View>
         </View>
@@ -36,6 +40,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     childContainer: {
+        flex: 1,
         gap: 2
     },
     mealDescriptionContainer: {

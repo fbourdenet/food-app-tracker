@@ -16,7 +16,7 @@ const NutrientsRecap = () => {
                     rotation={0}
                     fill={20}
                     children={() => <Text style={fonts.p}>20g</Text>}
-                    tintColor={colors.red}
+                    tintColor={colors.green}
                     backgroundColor={colors.gray}
                 />
                 <Text style={fonts.h4}>Glucides</Text>
@@ -29,7 +29,7 @@ const NutrientsRecap = () => {
                     rotation={0}
                     fill={70}
                     children={() => <Text style={fonts.p}>70g</Text>}
-                    tintColor={colors.blue}
+                    tintColor={colors.green}
                     backgroundColor={colors.gray}
                 />
                 <Text style={fonts.h4}>Lipides</Text>

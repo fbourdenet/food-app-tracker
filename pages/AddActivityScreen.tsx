@@ -26,7 +26,7 @@ const AddActivityScreen = () => {
                         style={styles.input}
                         onChangeText={(value) => setActivity(value)}
                         value={activity}
-                        placeholder="Votre aliment..."
+                        placeholder="Votre activité..."
                         autoCorrect={false}
                         keyboardAppearance='dark'
                         placeholderTextColor={colors.lightgray}
