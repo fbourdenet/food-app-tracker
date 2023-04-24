@@ -3,14 +3,15 @@ import { RouteProp } from "@react-navigation/native";
 import React from 'react'
 
 import BottomTabNavigation from './BottomTabNavigation'
-import AddMealScreen from '../pages/AddMealScreen'
+import AddFoodScreen from '../pages/AddFoodScreen'
 import ScanScreen from '../pages/ScanScreen'
 import MealScreen from "../pages/MealScreen";
 import AddActivityScreen from "../pages/AddActivityScreen";
 import ActivityScreen from "../pages/ActivityScreen";
+import FoodScreen from "../pages/FoodScreen";
 
 export type StackNavigationParamList = {
-    AddMeal: undefined,
+    AddFood: undefined,
     AddActivity: undefined,
     Activity: {
         title: string
@@ -18,6 +19,9 @@ export type StackNavigationParamList = {
     Meal: {
         title: string
     },
+    Food: {
+        title: string,
+    }
     BottomTabNavigation: undefined,
     Scan: undefined
 }
@@ -32,10 +36,11 @@ const StackNavigation = () => {
             }}
         >
             <Stack.Screen name="BottomTabNavigation" component={BottomTabNavigation} />
-            <Stack.Screen name="AddMeal" component={AddMealScreen} />
+            <Stack.Screen name="AddFood" component={AddFoodScreen} />
             <Stack.Screen name="AddActivity" component={AddActivityScreen} />
             <Stack.Screen name="Activity" component={ActivityScreen} />
             <Stack.Screen name="Meal" component={MealScreen} />
+            <Stack.Screen name="Food" component={FoodScreen} />
             <Stack.Screen name="Scan" component={ScanScreen} />
         </Stack.Navigator>
     )

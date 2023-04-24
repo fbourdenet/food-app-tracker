@@ -12,7 +12,8 @@ import Meal from '../components/Journal/MealItem'
 import Divider from '../components/shared/Divider'
 import CustomButton from '../components/shared/CustomButton'
 
-const MealScreen = () => {
+
+const FoodScreen = () => {
     const route = useRoute<MealScreenRouteProps>();
     const navigation = useNavigation<StackNavigationProps>();
 
@@ -24,15 +25,8 @@ const MealScreen = () => {
             />
             <View style={styles.view}>
                 <Section>
-                    <Meal name="Skyr" kcal={73} weigth={"135"} icon='https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg' />
-                    <Divider />
-                    <Meal name="Flocons d'avoine" kcal={233} weigth={"50"} icon='https://images.openfoodfacts.org/images/products/322/982/001/9307/front_fr.194.400.jpg' />
-                    <Divider />
-                    <Meal name="Framboises" kcal={35} weigth={"50"} icon='https://assets.stickpng.com/images/580b57fcd9996e24bc43c19a.png' />
+                    <Meal name={route.params.title} kcal={73} weigth={"135"} icon='https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg' />
                 </Section>
-            </View>
-            <View style={styles.footer}>
-                <CustomButton title='Ajouter un aliment' action={() => navigation.navigate("AddFood")} />
             </View>
         </SafeAreaView>
     )
@@ -68,4 +62,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default MealScreen
+export default FoodScreen

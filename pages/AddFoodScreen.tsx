@@ -14,8 +14,8 @@ import Divider from '../components/shared/Divider';
 import { getProductsByName } from '../api/api';
 
 const AddMealScreen = () => {
-    const [meals, setMeals] = useState<Product[] | null>(null);
-    const [meal, setMeal] = useState<string>("");
+    const [foods, setFoods] = useState<Product[] | null>(null);
+    const [food, setFood] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
 
     const navigation = useNavigation<StackNavigationProps>();
@@ -24,7 +24,7 @@ const AddMealScreen = () => {
         setLoading(true);
 
         let products: Product[] = await getProductsByName(name);
-        setMeals(products);
+        setFoods(products);
         
         setLoading(false);
     }
@@ -41,16 +41,16 @@ const AddMealScreen = () => {
                     <MaterialCommunityIcons color={colors.lightgray} name='magnify' size={20} />
                     <TextInput
                         style={styles.input}
-                        onChangeText={(value) => setMeal(value)}
-                        value={meal}
+                        onChangeText={(value) => setFood(value)}
+                        value={food}
                         placeholder="Votre aliment..."
                         autoCorrect={false}
                         keyboardAppearance='dark'
                         placeholderTextColor={colors.lightgray}
                         onSubmitEditing={(e) => getProducts(e.nativeEvent.text)}
                     />
-                    {meal.length > 0 &&
-                        <TouchableWithoutFeedback onPress={() => setMeal("")}>
+                    {food.length > 0 &&
+                        <TouchableWithoutFeedback onPress={() => setFood("")}>
                             <MaterialCommunityIcons color={colors.lightgray} name='close-circle' size={20} />
                         </TouchableWithoutFeedback>
                     }
@@ -59,14 +59,14 @@ const AddMealScreen = () => {
                     {loading &&
                         <ActivityIndicator size="small" color={colors.lightgray} />
                     }
-                    {meals && !loading &&
+                    {foods && !loading &&
                         <Section>
                             {
-                                meals.map((meal, index) => {
+                                foods.map((food, index) => {
                                     return (
-                                        <React.Fragment key={meal._id}>
-                                            <MealItem icon={meal.selected_images.front.small.fr} name={meal.product_name} kcal={meal.nutriments.energy} weigth={meal.quantity} />
-                                            {meals.length - 1 !== index &&
+                                        <React.Fragment key={food._id}>
+                                            <MealItem icon={food.selected_images.front.small.fr} name={food.product_name} kcal={food.nutriments.energy} weigth={food.quantity} />
+                                            {foods.length - 1 !== index &&
                                                 <Divider />
                                             }
                                         </React.Fragment>
