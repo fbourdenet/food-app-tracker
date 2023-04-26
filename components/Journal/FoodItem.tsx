@@ -8,14 +8,15 @@ import { StackNavigationProps } from '../../types/StackNavigationProps'
 import { Food } from "../../types/Food"
 
 type FoodItemProps = {
-    food: Food
+    food: Food,
+    meal_time: string
 }
 
-const FoodItem = ({ food }: FoodItemProps) => {
+const FoodItem = ({ food, meal_time }: FoodItemProps) => {
     const navigation = useNavigation<StackNavigationProps>();
 
     return (
-        <TouchableWithoutFeedback onPress={() => navigation.navigate("Food", { food: food })}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Food", { food: food, meal_time: meal_time})}>
             <View style={styles.container}>
                 <Image
                     style={{ width: 40, height: 40, resizeMode: "contain", borderRadius: 5, backgroundColor: colors.white }}
@@ -30,7 +31,6 @@ const FoodItem = ({ food }: FoodItemProps) => {
 
                         {food.energy.value && food.quantity &&
                             <Text style={[fonts.tiny, styles.separator]}>●</Text>
-
                         }
 
                         {food.quantity &&

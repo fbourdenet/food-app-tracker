@@ -30,13 +30,13 @@ const JournalScreen = () => {
                     <CaloriesRecap />
                     <Section title='Nutriments' children={<NutrientsRecap />}></Section>
                     <Section title='Alimentation'>
-                        <MealsRecap icon="☕️" title="Petit Déjeuner" kcal={200} />
+                        <MealsRecap icon="☕️" title="Petit Déjeuner" meal_time="breakfast" kcal={200} />
                         <Divider />
-                        <MealsRecap icon="🥗" title="Déjeuner" kcal={500} />
+                        <MealsRecap icon="🥗" title="Déjeuner" meal_time="meal" kcal={500} />
                         <Divider />
-                        <MealsRecap icon="🍲" title="Diner" kcal={700} />
+                        <MealsRecap icon="🍲" title="Diner" meal_time="diner" kcal={700} />
                         <Divider />
-                        <MealsRecap icon="🍎" title="En-cas" kcal={150} />
+                        <MealsRecap icon="🍎" title="En-cas" meal_time="snack" kcal={150} />
                     </Section>
                     <Section title='Activités'>
                         <ActivitiesRecap icon="😎" title="Sport" kcal={73} />

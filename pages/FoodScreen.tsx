@@ -5,12 +5,24 @@ import { colors } from '../constants/colors'
 import ScreenHeader from '../components/shared/ScreenHeader'
 import { FoodScreenRouteProps } from '../types/FoodScreenRouteProps'
 import { StackNavigationProps } from '../types/StackNavigationProps';
-import Section from '../components/shared/Section'
+import CustomButton from '../components/shared/CustomButton'
+import { pb } from '../api/api'
+import { Food } from '../types/Food'
 
 
 const FoodScreen = () => {
     const route = useRoute<FoodScreenRouteProps>();
     const navigation = useNavigation<StackNavigationProps>();
+
+    const addFood = (food: Food) => {
+        pb.collection('foods').create({
+            name: food.name,
+            icon: food.icon,
+            energy: food.energy,
+            quantity: food.quantity,
+            meal_time: route.params.meal_time
+        })
+    }
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
@@ -21,6 +33,9 @@ const FoodScreen = () => {
             <View style={styles.view}>
                 <View style={styles.imageContainer}>
                     <Image source={{ uri: route.params.food.icon }} style={{ height: 150, width: '100%', resizeMode: 'contain' }} />
+                </View>
+                <View style={styles.footer}>
+                    <CustomButton title='Ajouter' action={() => addFood(route.params.food)} />
                 </View>
             </View>
         </SafeAreaView>

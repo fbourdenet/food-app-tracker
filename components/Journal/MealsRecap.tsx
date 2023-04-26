@@ -10,14 +10,15 @@ import { StackNavigationProps } from '../../types/StackNavigationProps';
 type MealRecapProps = {
     icon: string,
     title: string,
-    kcal: number
+    kcal: number,
+    meal_time: string
 }
 
-const MealsRecap = ({ icon, title, kcal }: MealRecapProps) => {
+const MealsRecap = ({ icon, title, kcal, meal_time }: MealRecapProps) => {
     const navigation = useNavigation<StackNavigationProps>();
 
     return (
-        <TouchableWithoutFeedback onPress={() => navigation.navigate("Meal", {title: title})}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Meal", {title: title, meal_time: meal_time})}>
             <View style={styles.mealContainer}>
                 <View style={styles.mealLeftContainer}>
                     <Text style={fonts.icon}>{icon}</Text>

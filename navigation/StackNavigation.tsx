@@ -12,16 +12,20 @@ import FoodScreen from "../pages/FoodScreen";
 import { Food } from "../types/Food";
 
 export type StackNavigationParamList = {
-    AddFood: undefined,
+    AddFood: {
+        meal_time: string; 
+    },
     AddActivity: undefined,
     Activity: {
         title: string
     },
     Meal: {
-        title: string
+        title: string,
+        meal_time: string
     },
     Food: {
-        food: Food
+        food: Food,
+        meal_time: string; 
     }
     BottomTabNavigation: undefined,
     Scan: undefined

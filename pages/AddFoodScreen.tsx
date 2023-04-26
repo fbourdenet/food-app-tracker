@@ -1,6 +1,6 @@
 import { SafeAreaView, View, StyleSheet, TextInput, TouchableWithoutFeedback, ScrollView, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { colors } from '../constants/colors'
 
@@ -12,6 +12,7 @@ import FoodItem from '../components/Journal/FoodItem'
 import Section from '../components/shared/Section';
 import Divider from '../components/shared/Divider';
 import { getProductsByName } from '../api/api';
+import { AddFoodScreenRouteProps } from '../types/AddFoodScreenRouteProps';
 
 const AddMealScreen = () => {
     const [foods, setFoods] = useState<OpenFoodFacts[] | null>(null);
@@ -19,6 +20,7 @@ const AddMealScreen = () => {
     const [loading, setLoading] = useState<boolean>(false);
 
     const navigation = useNavigation<StackNavigationProps>();
+    const route = useRoute<AddFoodScreenRouteProps>();
 
     const getProducts = async (name: string) => {
         setLoading(true);
@@ -66,12 +68,15 @@ const AddMealScreen = () => {
                                     foods.map((food, index) => {
                                         return (
                                             <React.Fragment key={food._id}>
-                                                <FoodItem food={{
-                                                    icon: food.selected_images.front.small.fr,
-                                                    name: food.product_name,
-                                                    energy: { unit: food.nutriments['energy-kcal_unit'], value: food.nutriments['energy-kcal_100g'] },
-                                                    quantity: food.product_quantity
-                                                }} />
+                                                <FoodItem
+                                                    food={{
+                                                        icon: food.selected_images.front.small.fr,
+                                                        name: food.product_name,
+                                                        energy: { unit: food.nutriments['energy-kcal_unit'], value: food.nutriments['energy-kcal_100g'] },
+                                                        quantity: food.product_quantity
+                                                    }}
+                                                    meal_time={route.params.meal_time}
+                                                />
                                                 {foods.length - 1 !== index &&
                                                     <Divider />
                                                 }

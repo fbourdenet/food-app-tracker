@@ -1,5 +1,5 @@
-import { SafeAreaView, View, StyleSheet, Button, TouchableWithoutFeedback } from 'react-native'
-import React, { useState } from 'react'
+import { SafeAreaView, View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 
 import { colors } from '../constants/colors'
@@ -11,10 +11,23 @@ import Section from '../components/shared/Section'
 import FoodItem from '../components/Journal/FoodItem'
 import Divider from '../components/shared/Divider'
 import CustomButton from '../components/shared/CustomButton'
+import { Food } from '../types/Food'
+import { pb } from '../api/api'
+
 
 const MealScreen = () => {
     const route = useRoute<MealScreenRouteProps>();
     const navigation = useNavigation<StackNavigationProps>();
+
+    const [foods, setFoods] = useState<Food[] | null>(null);
+
+    useEffect(() => {
+        pb.collection('foods').getList<Food>(1, 50, {
+            filter: 'meal_time = "' + route.params.meal_time + '"'
+        }).then((results) => {
+            setFoods(results.items)
+        });
+    }, [])
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
@@ -23,18 +36,27 @@ const MealScreen = () => {
                 leftIcon={{ name: "chevron-left", action: navigation.goBack }}
             />
             <View style={styles.view}>
-                <Section>
-                    <FoodItem food={{icon: "https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg", name: "Skyr", energy: {value: 50, unit: "kcal"}, quantity: 500}} />
-                    <Divider />
-                    <FoodItem food={{icon: "https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg", name: "Skyr", energy: {value: 50, unit: "kcal"}, quantity: 500}} />
-                    <Divider />
-                    <FoodItem food={{icon: "https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg", name: "Skyr", energy: {value: 50, unit: "kcal"}, quantity: 500}} />
-                </Section>
+                {foods && foods.length !== 0 &&
+                    <Section>
+                        {
+                            foods.map((food, index) => {
+                                return (
+                                    <React.Fragment key={food.id}>
+                                        <FoodItem food={food} meal_time={route.params.meal_time} />
+                                        {index !== foods.length - 1 &&
+                                            <Divider />
+                                        }
+                                    </React.Fragment>
+                                )
+                            })
+                        }
+                    </Section>
+                }
             </View>
             <View style={styles.footer}>
-                <CustomButton title='Ajouter un aliment' action={() => navigation.navigate("AddFood")} />
+                <CustomButton title='Ajouter un aliment' action={() => navigation.navigate("AddFood", {meal_time: route.params.meal_time})} />
             </View>
-        </SafeAreaView>
+        </SafeAreaView >
     )
 }
 
@@ -46,6 +68,9 @@ const styles = StyleSheet.create({
     view: {
         padding: 20,
         gap: 20
+    },
+    noFoodsText: {
+        textAlign: 'center'
     },
     footer: {
         justifyContent: "center",
