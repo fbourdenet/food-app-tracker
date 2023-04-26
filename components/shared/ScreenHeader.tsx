@@ -17,7 +17,7 @@ const ScreenHeader = ({ title = "Aujourd'hui", leftIcon, rightIcon }: ScreenHead
     return (
         <View style={styles.container}>
             <MaterialCommunityIcons style={styles.leftIcon} name={leftIcon?.name} size={40} color={leftIcon?.color ? leftIcon.color : colors.green} onPress={() => leftIcon?.action && leftIcon.action()} />
-            <Text style={fonts.h4} adjustsFontSizeToFit={true}>{title}</Text>
+            <Text style={[fonts.h4, styles.middleText]} numberOfLines={1}>{title}</Text>
             <MaterialCommunityIcons style={styles.rightIcon} name={rightIcon?.name} size={26} color={colors.green} onPress={() => rightIcon?.action && rightIcon.action()} />
         </View>
     )
@@ -31,15 +31,21 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         paddingTop: 15,
     },
+    middleText: {
+        paddingRight: 70,
+        paddingLeft: 70,
+    },
     leftIcon: {
         position: "absolute",
         left: 10,
-        top: 2
+        top: 2,
+        zIndex: 1
     },
     rightIcon: {
         position: "absolute",
         right: 20,
-        top: 10
+        top: 10,
+        zIndex: 1
     },
 })
 

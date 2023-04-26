@@ -9,6 +9,7 @@ import MealScreen from "../pages/MealScreen";
 import AddActivityScreen from "../pages/AddActivityScreen";
 import ActivityScreen from "../pages/ActivityScreen";
 import FoodScreen from "../pages/FoodScreen";
+import { Food } from "../types/Food";
 
 export type StackNavigationParamList = {
     AddFood: undefined,
@@ -20,7 +21,7 @@ export type StackNavigationParamList = {
         title: string
     },
     Food: {
-        title: string,
+        food: Food
     }
     BottomTabNavigation: undefined,
     Scan: undefined

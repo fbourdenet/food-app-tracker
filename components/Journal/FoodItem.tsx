@@ -15,7 +15,7 @@ const FoodItem = ({ food }: FoodItemProps) => {
     const navigation = useNavigation<StackNavigationProps>();
 
     return (
-        <TouchableWithoutFeedback onPress={() => navigation.navigate("Food", { title: food.name })}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Food", { food: food })}>
             <View style={styles.container}>
                 <Image
                     style={{ width: 40, height: 40, resizeMode: "contain", borderRadius: 5, backgroundColor: colors.white }}

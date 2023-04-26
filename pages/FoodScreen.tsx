@@ -1,29 +1,27 @@
-import { SafeAreaView, View, StyleSheet, Button, TouchableWithoutFeedback } from 'react-native'
-import React, { useState } from 'react'
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-
+import { SafeAreaView, View, StyleSheet, Image } from 'react-native'
+import React from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { colors } from '../constants/colors'
-
 import ScreenHeader from '../components/shared/ScreenHeader'
-import { MealScreenRouteProps } from '../types/MealScreenRouteProps';
+import { FoodScreenRouteProps } from '../types/FoodScreenRouteProps'
 import { StackNavigationProps } from '../types/StackNavigationProps';
 import Section from '../components/shared/Section'
-import FoodItem from '../components/Journal/FoodItem'
 
 
 const FoodScreen = () => {
-    const route = useRoute<MealScreenRouteProps>();
+    const route = useRoute<FoodScreenRouteProps>();
     const navigation = useNavigation<StackNavigationProps>();
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
             <ScreenHeader
-                title={route.params.title}
+                title={route.params.food.name}
                 leftIcon={{ name: "chevron-left", action: navigation.goBack }}
             />
             <View style={styles.view}>
-                <Section>
-                </Section>
+                <View style={styles.imageContainer}>
+                    <Image source={{ uri: route.params.food.icon }} style={{ height: 150, width: '100%', resizeMode: 'contain' }} />
+                </View>
             </View>
         </SafeAreaView>
     )
@@ -36,22 +34,13 @@ const styles = StyleSheet.create({
     },
     view: {
         padding: 20,
-        gap: 20
+        gap: 20,
     },
-    inputContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: colors.gray,
-        height: 35,
+    imageContainer: {
+        width: '100%',
+        backgroundColor: colors.white,
         borderRadius: 10,
-        color: colors.white,
-        paddingLeft: 7,
-        paddingRight: 7,
-        gap: 4
-    },
-    input: {
-        flex: 1,
-        color: colors.white
+        padding: 20
     },
     footer: {
         justifyContent: "center",

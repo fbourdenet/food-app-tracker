@@ -25,7 +25,7 @@ const AddMealScreen = () => {
 
         let foods: OpenFoodFacts[] = await getProductsByName(name);
         setFoods(foods);
-        
+
         setLoading(false);
     }
 
@@ -55,31 +55,34 @@ const AddMealScreen = () => {
                         </TouchableWithoutFeedback>
                     }
                 </View>
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    {loading &&
-                        <ActivityIndicator size="small" color={colors.lightgray} />
-                    }
-                    {foods && !loading &&
-                        <Section>
-                            {
-                                foods.map((food, index) => {
-                                    return (
-                                        <React.Fragment key={food._id}>
-                                            <FoodItem food={{
-                                                icon: food.selected_images.front.small.fr,
-                                                name: food.product_name,
-                                                energy: {unit: food.nutriments['energy-kcal_unit'], value: food.nutriments['energy-kcal_100g']},
-                                                quantity: food.product_quantity
-                                            }} />
-                                            {foods.length - 1 !== index &&
-                                                <Divider />
-                                            }
-                                        </React.Fragment>
-                                    )
-                                })
-                            }
-                        </Section>
-                    }
+                <ScrollView style={styles.resultsScrollview} showsVerticalScrollIndicator={false}>
+                    <View>
+                        {loading &&
+                            <ActivityIndicator size="small" color={colors.lightgray} />
+                        }
+                        {foods && !loading &&
+                            <Section>
+                                {
+                                    foods.map((food, index) => {
+                                        return (
+                                            <React.Fragment key={food._id}>
+                                                <FoodItem food={{
+                                                    icon: food.selected_images.front.small.fr,
+                                                    name: food.product_name,
+                                                    energy: { unit: food.nutriments['energy-kcal_unit'], value: food.nutriments['energy-kcal_100g'] },
+                                                    quantity: food.product_quantity
+                                                }} />
+                                                {foods.length - 1 !== index &&
+                                                    <Divider />
+                                                }
+                                            </React.Fragment>
+                                        )
+                                    })
+                                }
+                            </Section>
+                        }
+                    </View>
+
                 </ScrollView>
             </View>
 
@@ -93,7 +96,10 @@ const styles = StyleSheet.create({
         backgroundColor: colors.background,
     },
     view: {
-        padding: 20,
+        flex: 1,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 20,
         gap: 20
     },
     inputContainer: {
@@ -110,6 +116,8 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
         color: colors.white,
+    },
+    resultsScrollview: {
     }
 })
 
