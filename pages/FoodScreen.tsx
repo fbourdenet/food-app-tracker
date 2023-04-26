@@ -35,7 +35,10 @@ const FoodScreen = () => {
                     <Image source={{ uri: route.params.food.icon }} style={{ height: 150, width: '100%', resizeMode: 'contain' }} />
                 </View>
                 <View style={styles.footer}>
-                    <CustomButton title='Ajouter' action={() => addFood(route.params.food)} />
+                    <CustomButton title='Ajouter' action={() => {
+                        addFood(route.params.food);
+                        navigation.goBack()
+                    }} />
                 </View>
             </View>
         </SafeAreaView>

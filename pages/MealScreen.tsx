@@ -19,15 +19,25 @@ const MealScreen = () => {
     const route = useRoute<MealScreenRouteProps>();
     const navigation = useNavigation<StackNavigationProps>();
 
-    const [foods, setFoods] = useState<Food[] | null>(null);
+    const [foods, setFoods] = useState<Food[]>([]);
 
     useEffect(() => {
-        pb.collection('foods').getList<Food>(1, 50, {
+        pb.collection('foods').getFullList<Food>({
             filter: 'meal_time = "' + route.params.meal_time + '"'
         }).then((results) => {
-            setFoods(results.items)
+            setFoods(results)
         });
-    }, [])
+
+        pb.collection('foods').subscribe<Food>('*', ({ record: food }) => {
+            setFoods([...foods, {...food}]);
+        })
+
+        return () => {
+            //create function in api
+            console.log("unsubscribing")
+            pb.collection('foods').unsubscribe();
+        }
+    }, []);
 
     return (
         <SafeAreaView style={styles.safeAreaView}>

@@ -70,10 +70,10 @@ const AddMealScreen = () => {
                                             <React.Fragment key={food._id}>
                                                 <FoodItem
                                                     food={{
-                                                        icon: food.selected_images.front.small.fr,
+                                                        icon: food?.selected_images?.front?.small?.fr,
                                                         name: food.product_name,
                                                         energy: { unit: food.nutriments['energy-kcal_unit'], value: food.nutriments['energy-kcal_100g'] },
-                                                        quantity: food.product_quantity
+                                                        quantity: food?.product_quantity
                                                     }}
                                                     meal_time={route.params.meal_time}
                                                 />

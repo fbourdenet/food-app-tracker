@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, ScrollView, StyleSheet, } from 'react-native'
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 import Section from '../components/shared/Section'
 import NutrientsRecap from '../components/Journal/NutrientsRecap'
@@ -13,6 +13,9 @@ import { colors } from '../constants/colors'
 import {BottomSheetModal} from '@gorhom/bottom-sheet'
 import CustomDatePicker from '../components/shared/CustomDatePicker'
 import ActivitiesRecap from '../components/Journal/ActivitiesRecap'
+
+import { pb } from '../api/api'
+
 
 const JournalScreen = () => {
     console.log("render journalscreen");
@@ -30,13 +33,13 @@ const JournalScreen = () => {
                     <CaloriesRecap />
                     <Section title='Nutriments' children={<NutrientsRecap />}></Section>
                     <Section title='Alimentation'>
-                        <MealsRecap icon="☕️" title="Petit Déjeuner" meal_time="breakfast" kcal={200} />
+                        <MealsRecap icon="☕️" title="Petit Déjeuner" meal_time="breakfast" />
                         <Divider />
-                        <MealsRecap icon="🥗" title="Déjeuner" meal_time="meal" kcal={500} />
+                        <MealsRecap icon="🥗" title="Déjeuner" meal_time="meal"  />
                         <Divider />
-                        <MealsRecap icon="🍲" title="Diner" meal_time="diner" kcal={700} />
+                        <MealsRecap icon="🍲" title="Diner" meal_time="diner" />
                         <Divider />
-                        <MealsRecap icon="🍎" title="En-cas" meal_time="snack" kcal={150} />
+                        <MealsRecap icon="🍎" title="En-cas" meal_time="snack" />
                     </Section>
                     <Section title='Activités'>
                         <ActivitiesRecap icon="😎" title="Sport" kcal={73} />

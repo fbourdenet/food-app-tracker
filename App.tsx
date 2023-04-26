@@ -5,9 +5,11 @@ import {
 
 import StackNavigation from './navigation/StackNavigation';
 import { StatusBar } from 'expo-status-bar';
+import EventSource from 'react-native-sse'
 
 import "./i18n.config";
 
+global.EventSource = EventSource;
 
 export default function App() {
   return (
