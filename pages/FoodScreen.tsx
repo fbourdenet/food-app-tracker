@@ -8,9 +8,7 @@ import ScreenHeader from '../components/shared/ScreenHeader'
 import { MealScreenRouteProps } from '../types/MealScreenRouteProps';
 import { StackNavigationProps } from '../types/StackNavigationProps';
 import Section from '../components/shared/Section'
-import Meal from '../components/Journal/MealItem'
-import Divider from '../components/shared/Divider'
-import CustomButton from '../components/shared/CustomButton'
+import FoodItem from '../components/Journal/FoodItem'
 
 
 const FoodScreen = () => {
@@ -25,7 +23,6 @@ const FoodScreen = () => {
             />
             <View style={styles.view}>
                 <Section>
-                    <Meal name={route.params.title} kcal={73} weigth={"135"} icon='https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg' />
                 </Section>
             </View>
         </SafeAreaView>

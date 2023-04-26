@@ -3,11 +3,11 @@ export interface Root {
   page: string
   page_count: number
   page_size: number
-  products: Product[]
+  products: OpenFoodFacts[]
   skip: number
 }
 
-export interface Product {
+export interface OpenFoodFacts {
   _id: string
   _keywords: string[]
   added_countries_tags: any[]
@@ -188,7 +188,7 @@ export interface Product {
   popularity_tags: string[]
   product_name: string
   product_name_fr: string
-  product_quantity?: string
+  product_quantity?: number
   purchase_places: string
   purchase_places_tags: any[]
   quantity: string

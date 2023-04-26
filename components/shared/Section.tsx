@@ -15,9 +15,11 @@ const Section = ({ title, children }: SectionProps) => {
             {title &&
                 <Text style={fonts.h2}>{title}</Text>
             }
-            <View style={styles.subContainer}>
-                {children}
-            </View>
+            {children &&
+                <View style={styles.subContainer}>
+                    {children}
+                </View>
+            }
         </View>
     )
 }

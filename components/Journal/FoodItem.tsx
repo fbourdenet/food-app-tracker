@@ -5,33 +5,36 @@ import { colors } from '../../constants/colors'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProps } from '../../types/StackNavigationProps'
+import { Food } from "../../types/Food"
 
-type MealItemProps = {
-    icon?: string,
-    name: string,
-    kcal: number,
-    weigth: string
+type FoodItemProps = {
+    food: Food
 }
 
-const MealItem = ({ icon, name, kcal, weigth }: MealItemProps) => {
+const FoodItem = ({ food }: FoodItemProps) => {
     const navigation = useNavigation<StackNavigationProps>();
 
     return (
-        <TouchableWithoutFeedback onPress={() => navigation.navigate("Food", {title: name})}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Food", { title: food.name })}>
             <View style={styles.container}>
                 <Image
                     style={{ width: 40, height: 40, resizeMode: "contain", borderRadius: 5, backgroundColor: colors.white }}
-                    source={{ uri: icon }}
+                    source={{ uri: food.icon }}
                 />
                 <View style={styles.childContainer}>
-                    <Text style={fonts.h4} numberOfLines={1}>{name}</Text>
+                    <Text style={fonts.h4} numberOfLines={1}>{food.name}</Text>
                     <View style={styles.mealDescriptionContainer}>
-                        <Text style={[fonts.h5, styles.kcal]}>{kcal} kcal</Text>
-                        {weigth &&
-                            <>
-                                <Text style={[fonts.tiny, styles.separator]}>●</Text>
-                                <Text style={fonts.h5}>{weigth}</Text>
-                            </>
+                        {food.energy.value &&
+                            <Text style={[fonts.h5, styles.kcal]}>{food.energy.value} {food.energy.unit}</Text>
+                        }
+
+                        {food.energy.value && food.quantity &&
+                            <Text style={[fonts.tiny, styles.separator]}>●</Text>
+
+                        }
+
+                        {food.quantity &&
+                            <Text style={fonts.h5}>{food.quantity} g</Text>
                         }
                     </View>
                 </View>
@@ -48,12 +51,12 @@ const styles = StyleSheet.create({
     },
     childContainer: {
         flex: 1,
-        gap: 2
+        gap: 4
     },
     mealDescriptionContainer: {
         flexDirection: "row",
         alignItems: "center",
-        gap: 7
+        gap: 6
     },
     kcal: {
         color: colors.lightgray
@@ -67,4 +70,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default MealItem
+export default FoodItem

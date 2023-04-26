@@ -8,7 +8,7 @@ import ScreenHeader from '../components/shared/ScreenHeader'
 import { MealScreenRouteProps } from '../types/MealScreenRouteProps';
 import { StackNavigationProps } from '../types/StackNavigationProps';
 import Section from '../components/shared/Section'
-import Meal from '../components/Journal/MealItem'
+import FoodItem from '../components/Journal/FoodItem'
 import Divider from '../components/shared/Divider'
 import CustomButton from '../components/shared/CustomButton'
 
@@ -24,11 +24,11 @@ const MealScreen = () => {
             />
             <View style={styles.view}>
                 <Section>
-                    <Meal name="Skyr" kcal={73} weigth={"135"} icon='https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg' />
+                    <FoodItem food={{icon: "https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg", name: "Skyr", energy: {value: 50, unit: "kcal"}, quantity: 500}} />
                     <Divider />
-                    <Meal name="Flocons d'avoine" kcal={233} weigth={"50"} icon='https://images.openfoodfacts.org/images/products/322/982/001/9307/front_fr.194.400.jpg' />
+                    <FoodItem food={{icon: "https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg", name: "Skyr", energy: {value: 50, unit: "kcal"}, quantity: 500}} />
                     <Divider />
-                    <Meal name="Framboises" kcal={35} weigth={"50"} icon='https://assets.stickpng.com/images/580b57fcd9996e24bc43c19a.png' />
+                    <FoodItem food={{icon: "https://images.openfoodfacts.org/images/products/303/349/170/4642/front_fr.59.400.jpg", name: "Skyr", energy: {value: 50, unit: "kcal"}, quantity: 500}} />
                 </Section>
             </View>
             <View style={styles.footer}>
@@ -46,21 +46,6 @@ const styles = StyleSheet.create({
     view: {
         padding: 20,
         gap: 20
-    },
-    inputContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: colors.gray,
-        height: 35,
-        borderRadius: 10,
-        color: colors.white,
-        paddingLeft: 7,
-        paddingRight: 7,
-        gap: 4
-    },
-    input: {
-        flex: 1,
-        color: colors.white
     },
     footer: {
         justifyContent: "center",

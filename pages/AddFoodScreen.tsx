@@ -7,14 +7,14 @@ import { colors } from '../constants/colors'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import ScreenHeader from '../components/shared/ScreenHeader'
 import { StackNavigationProps } from '../types/StackNavigationProps';
-import { Product } from '../types/OpenFoodFacts';
-import MealItem from '../components/Journal/MealItem'
+import { OpenFoodFacts } from '../types/OpenFoodFacts';
+import FoodItem from '../components/Journal/FoodItem'
 import Section from '../components/shared/Section';
 import Divider from '../components/shared/Divider';
 import { getProductsByName } from '../api/api';
 
 const AddMealScreen = () => {
-    const [foods, setFoods] = useState<Product[] | null>(null);
+    const [foods, setFoods] = useState<OpenFoodFacts[] | null>(null);
     const [food, setFood] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -23,8 +23,8 @@ const AddMealScreen = () => {
     const getProducts = async (name: string) => {
         setLoading(true);
 
-        let products: Product[] = await getProductsByName(name);
-        setFoods(products);
+        let foods: OpenFoodFacts[] = await getProductsByName(name);
+        setFoods(foods);
         
         setLoading(false);
     }
@@ -65,7 +65,12 @@ const AddMealScreen = () => {
                                 foods.map((food, index) => {
                                     return (
                                         <React.Fragment key={food._id}>
-                                            <MealItem icon={food.selected_images.front.small.fr} name={food.product_name} kcal={food.nutriments.energy} weigth={food.quantity} />
+                                            <FoodItem food={{
+                                                icon: food.selected_images.front.small.fr,
+                                                name: food.product_name,
+                                                energy: {unit: food.nutriments['energy-kcal_unit'], value: food.nutriments['energy-kcal_100g']},
+                                                quantity: food.product_quantity
+                                            }} />
                                             {foods.length - 1 !== index &&
                                                 <Divider />
                                             }
