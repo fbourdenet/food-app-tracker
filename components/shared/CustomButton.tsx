@@ -1,8 +1,9 @@
-import { Text, Button, StyleSheet } from 'react-native'
+import { Text, Button, StyleSheet, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { colors } from '../../constants/colors'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { fonts } from '../../constants/fonts'
+import { TouchableOpacity } from '@gorhom/bottom-sheet'
 
 type CustomButtonProps = {
     title: string,
@@ -11,15 +12,15 @@ type CustomButtonProps = {
 
 const CustomButton = ({ title, action }: CustomButtonProps) => {
     return (
-        <TouchableWithoutFeedback style={styles.container} onPress={() => action && action()}>
+        <TouchableOpacity style={styles.container} onPress={() => action && action()}>
             <Text style={fonts.h4}>{title}</Text>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        alignSelf: "flex-start",
+        alignSelf: "center",
         backgroundColor: colors.green,
         borderRadius: 50,
         paddingLeft: 40,

@@ -1,6 +1,6 @@
-import { SafeAreaView, View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import { SafeAreaView, View, StyleSheet, Text, TouchableWithoutFeedback, ScrollView } from 'react-native'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 
 import { colors } from '../constants/colors'
 
@@ -12,32 +12,33 @@ import FoodItem from '../components/Journal/FoodItem'
 import Divider from '../components/shared/Divider'
 import CustomButton from '../components/shared/CustomButton'
 import { Food } from '../types/Food'
-import { pb } from '../api/api'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 const MealScreen = () => {
     const route = useRoute<MealScreenRouteProps>();
     const navigation = useNavigation<StackNavigationProps>();
-
     const [foods, setFoods] = useState<Food[]>([]);
 
-    useEffect(() => {
-        pb.collection('foods').getFullList<Food>({
-            filter: 'meal_time = "' + route.params.meal_time + '"'
-        }).then((results) => {
-            setFoods(results)
-        });
+    const getFoodsStorageData = async () => {
+        const value = await AsyncStorage.getItem('foods');
 
-        pb.collection('foods').subscribe<Food>('*', ({ record: food }) => {
-            setFoods([...foods, {...food}]);
-        })
+        if (value !== null) {
+            const foods: Food[] = JSON.parse(value);
+            const foodsByMealTime: Food[] = foods.filter((food) => food.meal_time === route.params.meal_time);
 
-        return () => {
-            //create function in api
-            console.log("unsubscribing")
-            pb.collection('foods').unsubscribe();
+            setFoods(foodsByMealTime);
         }
+    }
+
+    useEffect(() => {
+        getFoodsStorageData();
     }, []);
+
+    useFocusEffect(useCallback(() => {
+        console.log("is focused")
+        getFoodsStorageData()
+    }, [navigation]));
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
@@ -45,27 +46,28 @@ const MealScreen = () => {
                 title={route.params.title}
                 leftIcon={{ name: "chevron-left", action: navigation.goBack }}
             />
-            <View style={styles.view}>
-                {foods && foods.length !== 0 &&
-                    <Section>
-                        {
-                            foods.map((food, index) => {
-                                return (
-                                    <React.Fragment key={food.id}>
-                                        <FoodItem food={food} meal_time={route.params.meal_time} />
-                                        {index !== foods.length - 1 &&
-                                            <Divider />
-                                        }
-                                    </React.Fragment>
-                                )
-                            })
-                        }
-                    </Section>
-                }
-            </View>
-            <View style={styles.footer}>
-                <CustomButton title='Ajouter un aliment' action={() => navigation.navigate("AddFood", {meal_time: route.params.meal_time})} />
-            </View>
+            <ScrollView>
+                <View style={styles.view}>
+                    {foods && foods.length !== 0 &&
+                        <Section>
+                            {
+                                foods.map((food, index) => {
+                                    return (
+                                        <React.Fragment key={index}>
+                                            <FoodItem food={food} meal_time={route.params.meal_time} />
+                                            {index !== foods.length - 1 &&
+                                                <Divider />
+                                            }
+                                        </React.Fragment>
+                                    )
+                                })
+                            }
+                        </Section>
+                    }
+                </View>
+                <CustomButton title='Ajouter un aliment' action={() => navigation.navigate("AddFood", { meal_time: route.params.meal_time })} />
+            </ScrollView>
+
         </SafeAreaView >
     )
 }

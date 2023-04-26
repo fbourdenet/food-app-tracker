@@ -7,7 +7,7 @@ const getProductsByName = async (name: string) => {
     return products
 }
 
-const pb = new PocketBase('http://192.168.2.21:8090').autoCancellation(false);
+const pb = new PocketBase('http://192.168.1.197:8090').autoCancellation(false);
 
 export {
     getProductsByName,

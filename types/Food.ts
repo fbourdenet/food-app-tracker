@@ -3,7 +3,8 @@ export type Food =  {
     icon?: string,
     name: string,
     energy: Energy,
-    quantity?: number
+    quantity?: number,
+    meal_time?: string
 }
 
 type Energy = {

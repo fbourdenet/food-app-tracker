@@ -8,6 +8,9 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProps } from '../../types/StackNavigationProps';
 import { pb } from '../../api/api';
 import { Food } from '../../types/Food';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 type MealRecapProps = {
     icon: string,
@@ -20,28 +23,36 @@ const MealsRecap = ({ icon, title, meal_time }: MealRecapProps) => {
     const [totalCalories, setTotalCalories] = useState(0);
 
     const computeTotalCalories = (foods: Food[]) => {
-        console.log('sssss', foods);
+        let tmp = 0;
         foods?.map((food) => {
-            setTotalCalories((tt) => tt += food.energy.value);
+            tmp += food.energy.value
         })
+
+        setTotalCalories(tmp);
+    }
+
+    const getFoodsStorageData = async () => {
+        const value = await AsyncStorage.getItem('foods');
+
+        if (value !== null) {
+            const foods: Food[] = JSON.parse(value);
+            const foodsByMealTime: Food[] = foods.filter((food) => food.meal_time === meal_time);
+
+            computeTotalCalories(foodsByMealTime);
+        }
     }
 
     useEffect(() => {
-        pb.collection('foods').getFullList<Food>({
-            filter: 'meal_time = "' + meal_time + '"'
-        }).then((results) => {
-            computeTotalCalories(results);
+        getFoodsStorageData();
+    }, []);
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            getFoodsStorageData()
         });
 
-        pb.collection('foods').subscribe<Food>('*', ({ record: food }) => {
-            setTotalCalories((tt) => tt += food.energy.value);
-        })
-
-        return () => {
-            //create function in api
-            pb.collection('foods').unsubscribe();
-        }
-    }, []);
+        return unsubscribe;
+    }, [navigation]);
 
 
     return (
